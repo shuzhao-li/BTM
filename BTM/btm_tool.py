@@ -111,6 +111,11 @@ def compute_activity_score(M, datadict):
     compute module M activity score as mean expression value of member genes, 
     using numpy.array function.
     datadict is formatted as {gene: expression_vector}.
+
+    Note: this works when difference of expression is taken between time points,
+    which self-normalize to subjects. 
+    Standardization is needed if the activity score is computed for original gene expression,
+    e.g. z-scores are calculated across samples and module scores are then computed on z-scores. 
     '''
     data = []
     for x in M:
@@ -374,8 +379,3 @@ def do_antibody_correlation(infile, antibody, outfile=''):
         # one can change dpi should higher resolution be desired.
         pyplot.savefig(output_file, dpi=100, format=output_format)
         print "A probability distribution plot is saved to %s" %output_file
-
-
-
-
-
