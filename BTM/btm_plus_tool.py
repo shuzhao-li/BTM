@@ -1,4 +1,4 @@
-‘’‘
+'''
 ## BTM_Plus at 2021
 
 An update with the help of Amnah Siddiqa.
@@ -11,16 +11,18 @@ compiled from these three papers:
 - Zhang, X., Lan, Y., Xu, J., Quan, F., Zhao, E., Deng, C., Luo, T., Xu, L., Liao, G., Yan, M. and Ping, Y., 2019. CellMarker: a manually curated resource of cell markers in human and mouse. Nucleic acids research, 47(D1), pp.D721-D728.
 
 - Monaco, G., Lee, B., Xu, W., Mustafah, S., Hwang, Y.Y., Carre, C., Burdin, N., Visan, L., Ceccarelli, M., Poidinger, M. and Zippelius, A., 2019. RNA-Seq signatures normalized by mRNA abundance allow absolute deconvolution of human immune cell types. Cell reports, 26(6), pp.1627-1640.
-’‘’
+'''
 
 import numpy as np
 from scipy import stats
 
 def dequote(s): return s.replace('"', '').replace("'", "")
 
-def read_gene_data(infile, start_col=1, sep='\t'):
+def read_gene_data(infile, gene_col=0, start_col=1, sep='\t'):
     '''
-    returns gene_data dictionary and header
+    returns gene_data dictionary and header.
+    gene_col : column for gene names/symbols.
+    start_col : starting column for gene expression values.
     '''
     gene_data = {}
     w = open(infile).readlines()
@@ -28,10 +30,10 @@ def read_gene_data(infile, start_col=1, sep='\t'):
     for line in w[1:]:
         a = line.rstrip().split(sep)
         if len(a) > 1:
-            data = np.array([float(x) for x in a[1:]])
+            data = np.array([float(x) for x in a[start_col:]])
             # using dequote in case user mistakes file format - 
             # some spreadsheet program may add quotes automatically
-            gene_data[dequote(a[0]).upper()] = data
+            gene_data[dequote(a[gene_col]).upper()] = data
 
     print("Got %d lines of gene data: " %len(gene_data))
 
@@ -55,10 +57,10 @@ def gene_data_to_activityscores(gene_data,
         for g,v in gene_data.items():
             v = stats.zscore(v)
         
-    s = '\t'.join(header) + '\n'
+    s = '\t'.join(['id', 'name', 'src'] + header[1:]) + '\n'
     for x in module_list:
         ascores = compute_activity_score(x['genes'], gene_data)
-        s += x + '\t' + '\t'.join([str(d.round(3)) for d in ascores]) + '\n'
+        s += '\t'.join([x['id'], x['name'], str(x['src'])] + [str(d.round(3)) for d in ascores]) + '\n'
         
     out = open(outfile, 'w')
     out.write(s)
@@ -79,4 +81,3 @@ def compute_activity_score(M, datadict):
             
     N = len(data)
     return np.array(data).sum(0)/N
-    

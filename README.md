@@ -5,17 +5,14 @@ Gene modules to interpret blood transcriptomics data.
 Used as alternative to conventional pathways, offering granular immunology and often better sensitivity.
 The modules can also be used as gene sets for GSEA analysis.
 This is the BTM modules described in
-https://www.nature.com/articles/ni.2789
 
-Li, S., Rouphael, N., et al, (2014).
-Molecular signatures of antibody responses derived from a systems biology study of five human vaccines.
-Nature immunology, 15(2), p.195.
+- Li, S., Rouphael, N., Duraisingham, S., Romero-Steiner, S., Presnell, S., Davis, C., ... & Pulendran, B. (2014). Molecular signatures of antibody responses derived from a systems biological study of 5 human vaccines. Nature immunology, 15(2), 195. https://www.nature.com/articles/ni.2789
+
 
 ## Installation
-
-···
+```
 pip install BTM
-···
+```
 
 ## BTM_Plus at 2021
 
@@ -43,6 +40,11 @@ All genesets/modules larger than 100 genes are excluded from BTM_Plus.
 'name': 'mismatch repair (I)', 
 'src': ['Li-Pulendran, Li_M22.0_mismatch repair (I)'], 
 'genes': ['SMC1A', 'POLA1', 'NCAPG2', 'RFC5', 'RFC4', 'MSH2', 'TMPO', 'MSH6', 'RFC2', 'GMNN', 'BUB1', 'RMI1', 'RACGAP1', 'EXO1', 'POLD3', 'PRIM1', 'ZWINT', 'CHEK1', 'CENPK', 'FIGNL1', 'MCM6', 'RFC3', 'SSBP1', 'TOPBP1', 'RPA3', 'SMC2']}
+
+>>> gd, header = read_gene_data('mydata.txt', gene_col=0, start_col=3, sep='\t')
+
+>>> gene_data_to_activityscores(gd, header, B2, zscore=True, outfile='btmplus_mydata.txt')
+
 ```
 
 # To generate permutations of BTM_Plus 

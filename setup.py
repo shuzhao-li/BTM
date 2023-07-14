@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
   name='BTM',
-  version='1.0.15',
+  version='1.1.2',
 
   author='Shuzhao Li',
   author_email='shuzhao.li@gmail.com',
