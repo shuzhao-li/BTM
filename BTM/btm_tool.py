@@ -66,7 +66,6 @@ it into a spreadsheet program for further formatting and editing. If the plot li
 installed, a probability distribution figure will also be produced by this step.
 This btm_tool program is provided as demonstration code. Users should feel free to modify and
 incorporate it into their own analysis.
-
 '''
 
 import random as rd
@@ -221,7 +220,8 @@ def enrichment_test(genelist, outfile=''):
     total_feature_num = len(allgenes)
     qset = set([x.upper() for x in genelist]).intersection( allgenes )
     query_set_size = len(qset)
-    print "Input list contains %d genes out of total %d genes in BTMs." %(query_set_size, total_feature_num)
+    print ("Input list contains %d genes out of total %d genes in BTMs." 
+            %(query_set_size, total_feature_num))
     
     result = []
     for modulename, members in ModuleDict.items():
@@ -238,7 +238,9 @@ def enrichment_test(genelist, outfile=''):
     result.sort()
     s = 'Module\tEnrichment_p_value\tModule_size\tOverlap_size\tOverlap_genes\n'
     for line in result:
-        s += line[1] + '\t' + str(line[0]) + '\t' + str(line[2]) + '\t' + str(line[3]) + '\t' + ','.join(line[4]) + '\n'
+        s += '\t'.join(
+            [line[1], str(line[0]), str(line[2]), str(line[3]), ','.join(line[4])]
+        ) + '\n'
     
     out = open(outfile, 'w')
     out.write(s)
@@ -378,4 +380,4 @@ def do_antibody_correlation(infile, antibody, outfile=''):
         pyplot.title(output_file)
         # one can change dpi should higher resolution be desired.
         pyplot.savefig(output_file, dpi=100, format=output_format)
-        print "A probability distribution plot is saved to %s" %output_file
+        print("A probability distribution plot is saved to %s" %output_file)

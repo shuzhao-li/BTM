@@ -1,5 +1,4 @@
-BTM (Blood Transcription Modules)
-=================================
+# BTM (Blood Transcription Modules)
 
 Gene modules to interpret blood transcriptomics data.
 
@@ -12,32 +11,13 @@ Li, S., Rouphael, N., et al, (2014).
 Molecular signatures of antibody responses derived from a systems biology study of five human vaccines.
 Nature immunology, 15(2), p.195.
 
-The btm_tool.py is to illustrate
+## Installation
 
-1. Converting gene level data to BTM activity table. (Can also convert Affy probeset level data to gene level data.)
-2. Enrichment test of an input gene list.
-3. Testing antibody correlation to gene expression at module level.
+···
+pip install BTM
+···
 
-Installation:
-This program requires Python 2.x, Numpy and Scipy (verion 0.10+, http://scipy.org/install.html).
-The optional plotting function depends on Python plot library matplotlib.
-
-## Example use of the 2013 version
-
-To convert gene level data to BTM module activity scores:
-```
-from btm.btm_tool import genetable_to_activityscores
-genetable_to_activityscores(infile, outfile)
-```
-
-Download tutorial package at
-https://media.nature.com/original/nature-assets/ni/journal/v15/n2/extref/ni.2789-S5.zip
-
-This "BTM_tutorial_package" download package should contain -
-btm_tool.py, btm_example_data.py, MCV4_D3v0_probesets.txt,
-gene_ab_correlation.rnk, BTM_for_GSEA_20131008.gmt, monocytes_vs_bcells.txt.
-
-# BTM_Plus at 2021
+## BTM_Plus at 2021
 
 An update with the help of Amnah Siddiqa.
 
@@ -55,46 +35,15 @@ I.e., if 5 genesets exist for the same cell population, a gene is kept if it app
 All genesets/modules larger than 100 genes are excluded from BTM_Plus.
 
 ```
-from BTM_Plus import BTM_Plus as B2
-
-print(len(B2))
-
-B2[88]
-
+>>> from BTM_Plus import BTM_Plus as B2
+>>> len(B2)
 276
-
-Out[5]:
-{'id': 'P089',
- 'name': 'mismatch repair (I)',
- 'src': ['Li-Pulendran, Li_M22.0_mismatch repair (I)'],
- 'genes': ['SMC1A',
-  'POLA1',
-  'NCAPG2',
-  'RFC5',
-  'RFC4',
-  'MSH2',
-  'TMPO',
-  'MSH6',
-  'RFC2',
-  'GMNN',
-  'BUB1',
-  'RMI1',
-  'RACGAP1',
-  'EXO1',
-  'POLD3',
-  'PRIM1',
-  'ZWINT',
-  'CHEK1',
-  'CENPK',
-  'FIGNL1',
-  'MCM6',
-  'RFC3',
-  'SSBP1',
-  'TOPBP1',
-  'RPA3',
-  'SMC2']}
-  ```
-
+>>> B2[88]
+{'id': 'P089', 
+'name': 'mismatch repair (I)', 
+'src': ['Li-Pulendran, Li_M22.0_mismatch repair (I)'], 
+'genes': ['SMC1A', 'POLA1', 'NCAPG2', 'RFC5', 'RFC4', 'MSH2', 'TMPO', 'MSH6', 'RFC2', 'GMNN', 'BUB1', 'RMI1', 'RACGAP1', 'EXO1', 'POLD3', 'PRIM1', 'ZWINT', 'CHEK1', 'CENPK', 'FIGNL1', 'MCM6', 'RFC3', 'SSBP1', 'TOPBP1', 'RPA3', 'SMC2']}
+```
 
 # To generate permutations of BTM_Plus 
 
@@ -107,3 +56,25 @@ This writes two files,
 'resampled_BTM_Plus.txt', 
 'random_genesets.txt',
 each line of a geneset of size 50 (default).
+
+## Example use of the 2013 version (Companion to original paper)
+
+To convert gene level data to BTM module activity scores:
+```
+from btm.btm_tool import genetable_to_activityscores
+genetable_to_activityscores(infile, outfile)
+```
+
+Download tutorial package at
+https://media.nature.com/original/nature-assets/ni/journal/v15/n2/extref/ni.2789-S5.zip
+
+This "BTM_tutorial_package" download package should contain -
+btm_tool.py, btm_example_data.py, MCV4_D3v0_probesets.txt,
+gene_ab_correlation.rnk, BTM_for_GSEA_20131008.gmt, monocytes_vs_bcells.txt.
+
+The btm_tool.py is to illustrate
+
+1. Converting gene level data to BTM activity table. (Can also convert Affy probeset level data to gene level data.)
+2. Enrichment test of an input gene list.
+3. Testing antibody correlation to gene expression at module level.
+
