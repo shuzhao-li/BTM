@@ -48,7 +48,7 @@ def read_gene_data(infile, gene_col=0, start_col=1, sep='\t'):
     return gene_data, header
 
 def gene_data_to_activityscores(gene_data,
-                                header, 
+                                sample_header, 
                                 module_list,
                                 zstandardize=True,
                                 outfile='btm_plus_converted_activities.tsv'):
@@ -65,7 +65,7 @@ def gene_data_to_activityscores(gene_data,
         for g,v in gene_data.items():
             gene_data[g] = zscore(v)
         
-    s = '\t'.join(['id', 'name', 'src'] + header[1:]) + '\n'
+    s = '\t'.join(['id', 'name', 'src'] + sample_header) + '\n'
     for x in module_list:
         ascores = compute_activity_score(x['genes'], gene_data)
         s += '\t'.join([x['id'], x['name'], str(x['src'])] + [str(d.round(3)) for d in ascores]) + '\n'
