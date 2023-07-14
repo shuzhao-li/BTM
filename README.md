@@ -6,7 +6,7 @@ Used as alternative to conventional pathways, offering granular immunology and o
 The modules can also be used as gene sets for GSEA analysis.
 This is the BTM modules described in
 
-- Li, S., Rouphael, N., Duraisingham, S., Romero-Steiner, S., Presnell, S., Davis, C., ... & Pulendran, B. (2014). Molecular signatures of antibody responses derived from a systems biological study of 5 human vaccines. Nature immunology, 15(2), 195. https://www.nature.com/articles/ni.2789
+- Li, S., Rouphael, N., Duraisingham, S., Romero-Steiner, S., Presnell, S., Davis, C., ..., Pulendran, B. (2014). Molecular signatures of antibody responses derived from a systems biological study of 5 human vaccines. Nature immunology, 15(2), 195.  https://www.nature.com/articles/ni.2789
 
 
 ## Installation
@@ -22,9 +22,7 @@ This set of modules excludes all TBA modules, and replaces the cell specific mar
 compiled from these three papers:
 
 - Aran, D., Hu, Z. and Butte, A.J., 2017. xCell: digitally portraying the tissue cellular heterogeneity landscape. Genome biology, 18(1), pp.1-14.
-
 - Zhang, X., Lan, Y., Xu, J., Quan, F., Zhao, E., Deng, C., Luo, T., Xu, L., Liao, G., Yan, M. and Ping, Y., 2019. CellMarker: a manually curated resource of cell markers in human and mouse. Nucleic acids research, 47(D1), pp.D721-D728.
-
 - Monaco, G., Lee, B., Xu, W., Mustafah, S., Hwang, Y.Y., Carre, C., Burdin, N., Visan, L., Ceccarelli, M., Poidinger, M. and Zippelius, A., 2019. RNA-Seq signatures normalized by mRNA abundance allow absolute deconvolution of human immune cell types. Cell reports, 26(6), pp.1627-1640.
 
 The cell specific markers were merged by keeping genes in at least half of the source sets. 
@@ -40,14 +38,9 @@ All genesets/modules larger than 100 genes are excluded from BTM_Plus.
 'name': 'mismatch repair (I)', 
 'src': ['Li-Pulendran, Li_M22.0_mismatch repair (I)'], 
 'genes': ['SMC1A', 'POLA1', 'NCAPG2', 'RFC5', 'RFC4', 'MSH2', 'TMPO', 'MSH6', 'RFC2', 'GMNN', 'BUB1', 'RMI1', 'RACGAP1', 'EXO1', 'POLD3', 'PRIM1', 'ZWINT', 'CHEK1', 'CENPK', 'FIGNL1', 'MCM6', 'RFC3', 'SSBP1', 'TOPBP1', 'RPA3', 'SMC2']}
-
->>> gd, header = read_gene_data('mydata.txt', gene_col=0, start_col=3, sep='\t')
-
->>> gene_data_to_activityscores(gd, header, B2, zscore=True, outfile='btmplus_mydata.txt')
-
 ```
 
-# To generate permutations of BTM_Plus 
+## To generate permutations of BTM_Plus 
 
 In same directory, change Number_Permutation to your need -
 ```
