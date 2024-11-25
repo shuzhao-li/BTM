@@ -30,7 +30,7 @@ I.e., if 5 genesets exist for the same cell population, a gene is kept if it app
 All genesets/modules larger than 100 genes are excluded from BTM_Plus.
 
 ```
->>> from BTM_Plus import BTM_Plus as B2
+>>> from BTM.BTM_Plus import BTM_Plus as B2
 >>> len(B2)
 276
 >>> B2[88]
@@ -61,7 +61,8 @@ genetable_to_activityscores(infile, outfile)
 ```
 
 Download tutorial package at
-https://media.nature.com/original/nature-assets/ni/journal/v15/n2/extref/ni.2789-S5.zip
+https://github.com/shuzhao-li/BTM/releases/download/v1/ni.2789-S5.zip
+ (same as original paper supplement ni.2789-S5.zip, but Nature link was broken).
 
 This "BTM_tutorial_package" download package should contain -
 btm_tool.py, btm_example_data.py, MCV4_D3v0_probesets.txt,

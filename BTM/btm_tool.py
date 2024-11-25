@@ -69,7 +69,8 @@ incorporate it into their own analysis.
 '''
 
 import random as rd
-from scipy import stats, std
+from scipy import stats
+from numpy import std
 from numpy import array, random
 
 # check availability of plotting library matplotlib
